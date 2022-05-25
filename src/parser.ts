@@ -145,6 +145,10 @@ export class Parser {
     private serializeTypeAlias(symbol: ts.Symbol) {
         const interfaceType = this.checker.getTypeAtLocation(symbol.declarations[0]) as ts.UnionOrIntersectionType;
 
+        if (interfaceType.aliasSymbol && interfaceType.aliasSymbol.escapedName === 'ProviderResult') {
+            console.log('test');
+        }
+
         const details = {
             name: symbol.getName(),
             documentation: ts.displayPartsToString(symbol.getDocumentationComment(this.checker)),
@@ -152,6 +156,10 @@ export class Parser {
             handleType: 'TypeAliasDeclaration',
             unions: []
         };
+
+        if (symbol.getName().startsWith('ProviderResult')) {
+            console.log(interfaceType.types ? interfaceType.types.length : '0');
+        }
 
         if (interfaceType.types) {
             interfaceType.types.forEach(type => {

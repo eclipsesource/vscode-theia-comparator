@@ -56,7 +56,7 @@ export class GrabTheiaVersions {
         // reverse order
         const edges = (data as any).repository.refs.edges.reverse();
         // add master and some latest tags
-        const versions = ['master'];
+        const versions = [];
         edges.forEach(element => {
             const currentVersion = element.node.name;
             if (currentVersion.startsWith('v')) {
@@ -65,7 +65,7 @@ export class GrabTheiaVersions {
         });
 
         // keep only 3 versions
-        versions.length = 3;
+        versions.length = 2;
         return versions;
     }
 

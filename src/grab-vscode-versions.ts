@@ -76,16 +76,16 @@ export class GrabVSCodeVersions {
         });
 
         // keep only the last 4 versions
-        versions.length = 4;
+        versions.length = 0;
 
         // add main version
-        versions.unshift('main');
+        // versions.unshift('main');
 
         // add current reference target version
         versions.push(GrabVSCodeVersions.CURRENT_REFERENCE_TARGET_VERSION);
 
         // add current reference version
-        versions.push(GrabVSCodeVersions.CURRENT_REFERENCE_VERSION);
+        // versions.push(GrabVSCodeVersions.CURRENT_REFERENCE_VERSION);
 
         return versions;
     }
